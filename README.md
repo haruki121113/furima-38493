@@ -16,53 +16,49 @@
 
 ### Association
 
- - has_many :items
- - has_many :addresses
+ - has_many :orders
 
 ## Itemsテーブル
 
-| Column                  | Type        | Options                        |
-| ----------------------- | ----------- | ------------------------------ |
-| merchandise_name        | text        | null: false                    |
-| merchandise_explanation | text        | null: false                    |
-| merchandise_category    | string      | null: false                    |
-| merchandise_condition   | string      | null: false                    |
-| delivery_charge         | string      | null: false                    |
-| shipping_from_area      | string      | null: false                    |
-| time_to_ship            | string      | null: false                    |
-| merchandise_price       | integer     | null: false                    |
-| user                    | references  | null: false, foreign_key: true |
+| Column                     | Type        | Options                        |
+| -------------------------- | ----------- | ------------------------------ |
+| merchandise_name           | string      | null: false                    |
+| merchandise_explanation    | text        | null: false                    |
+| merchandise_category_id    | integer     | null: false                    |
+| merchandise_condition_id   | integer     | null: false                    |
+| delivery_charge_id         | integer     | null: false                    |
+| area_id                    | integer     | null: false                    |
+| time_to_ship_id            | integer     | null: false                    |
+| merchandise_price          | integer     | null: false                    |
 
 ### Association
- - belongs_to :user
+
  - has_one :order
 
 ## Addressesテーブル
 
 | Column                   | Type        | Options                        |
 | ------------------------ | ----------- | ------------------------------ |
-| credit_card_number       | integer     | null: false                    |
-| effective_month          | integer     | null: false                    |
-| effective_year           | integer     | null: false                    |
-| security_code            | integer     | null: false                    |
-| receiving_postal_code    | integer     | null: false                    |
-| receiving_area           | string      | null: false                    |
+| receiving_postal_code    | string      | null: false                    |
+| area_id                  | integer     | null: false                    |
 | receiving_municipalities | string      | null: false                    |
 | receiving_house_number   | string      | null: false                    |
 | receiving_building_name  | string      |                                |
-| phone_number             | integer     | null: false                    |
-| user                     | references  | null: false, foreign_key: true |
+| phone_number             | string      | null: false                    |
+| order                    | references  | null: false, foreign_key: true |
 
 ### Association
- - belongs_to :user
- - has_one :order
+
+ - belongs_to :order
 
  ## Ordersテーブル
 | Column                   | Type        | Options                        |
 | ------------------------ | ----------- | ------------------------------ |
 | item                     | references  | null: false, foreign_key: true |
-| address                | references  | null: false, foreign_key: true |
+| user                     | references  | null: false, foreign_key: true |
 
 ### Association
+
  - belongs_to :item
- - belongs_to :addresses
+ - has_one :addresses
+ - belongs_to :user
