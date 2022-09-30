@@ -1,6 +1,6 @@
 # README
 
-## usersテーブル
+## Usersテーブル
 
 | Column                | Type        | Options                        |
 | --------------------- | ----------- | ------------------------------ |
@@ -11,17 +11,15 @@
 | main_first_name       | string      | null: false                    |
 | main_family_name_kana | string      | null: false                    |
 | main_first_name_kana  | string      | null: false                    |
-| birth_year            | integer     | null: false                    |
-| birth_month           | integer     | null: false                    |
-| birth_day             | integer     | null: false                    |
+| birth_day             | date        | null: false                    |
 
 
 ### Association
 
- - has_many :exhibits
- - has_many :buys
+ - has_many :items
+ - has_many :addresses
 
-## exhibitsテーブル
+## Itemsテーブル
 
 | Column                  | Type        | Options                        |
 | ----------------------- | ----------- | ------------------------------ |
@@ -38,7 +36,7 @@
 ### Association
  - belongs_to :user
 
-## buysテーブル
+## Addressesテーブル
 
 | Column                   | Type        | Options                        |
 | ------------------------ | ----------- | ------------------------------ |
@@ -56,3 +54,13 @@
 
 ### Association
  - belongs_to :user
+
+ ## Ordersテーブル
+| Column                   | Type        | Options                        |
+| ------------------------ | ----------- | ------------------------------ |
+| item                     | references  | null: false, foreign_key: true |
+| addresses                | references  | null: false, foreign_key: true |
+
+### Association
+ - belongs_to :item
+ - belongs_to :addresses
