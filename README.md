@@ -35,6 +35,7 @@
 
 ### Association
  - belongs_to :user
+ - has_one :order
 
 ## Addressesテーブル
 
@@ -54,12 +55,13 @@
 
 ### Association
  - belongs_to :user
+ - has_one :order
 
  ## Ordersテーブル
 | Column                   | Type        | Options                        |
 | ------------------------ | ----------- | ------------------------------ |
 | item                     | references  | null: false, foreign_key: true |
-| addresses                | references  | null: false, foreign_key: true |
+| address                | references  | null: false, foreign_key: true |
 
 ### Association
  - belongs_to :item
