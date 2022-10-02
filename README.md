@@ -17,6 +17,7 @@
 ### Association
 
  - has_many :orders
+ - has_many :items
 
 ## Itemsテーブル
 
@@ -30,10 +31,12 @@
 | area_id                    | integer     | null: false                    |
 | time_to_ship_id            | integer     | null: false                    |
 | merchandise_price          | integer     | null: false                    |
+| user                       | references  | null: false, foreign_key: true |
 
 ### Association
 
  - has_one :order
+ - belongs_to :user
 
 ## Addressesテーブル
 
@@ -60,5 +63,5 @@
 ### Association
 
  - belongs_to :item
- - has_one :addresses
+ - has_one :address
  - belongs_to :user
