@@ -15,4 +15,7 @@ class User < ApplicationRecord
   validates :main_family_name_kana, presence: true, format: { with: VALID_NAME_KANA_REGEX, allow_blank: true}
   validates :main_first_name_kana, presence: true, format: { with: VALID_NAME_KANA_REGEX, allow_blank: true}
   validates :birth_day, presence: true
+
+  has_many :items
+
 end
