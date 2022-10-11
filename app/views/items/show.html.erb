@@ -19,8 +19,7 @@
         ¥ <%= @item.merchandise_price %>
       </span>
       <span class="item-postage">
-        <% delivery_charge = DeliveryCharge.find_by_id @item.delivery_charge_id %>
-        <%= delivery_charge.name %>
+        <%= @item.delivery_charge.name %>
       </span>
     </div>
 
@@ -47,28 +46,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <% category = Category.find_by_id @item.merchandise_category_id %>
-          <td class="detail-value"><%= category.name %></td>
+          <td class="detail-value"><%= @item.merchandise_category.name %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <% condition = Condition.find_by_id @item.merchandise_condition_id %>
-          <td class="detail-value"><%= condition.name %></td>
+          <td class="detail-value"><%= @item.merchandise_condition.name %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <% delivery_charge = DeliveryCharge.find_by_id @item.delivery_charge_id %>
-          <td class="detail-value"><%= delivery_charge.name %></td>
+          <td class="detail-value"><%= @item.delivery_charge.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <% area = Area.find_by_id @item.area_id %>
-          <td class="detail-value"><%= area.name %></td>
+          <td class="detail-value"><%= @item.area.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <% time_to_ship = TimeToShip.find_by_id @item.time_to_ship_id %>
-          <td class="detail-value"><%= time_to_ship.name %></td>
+          <td class="detail-value"><%= @item.time_to_ship.name %></td>
         </tr>
       </tbody>
     </table>
@@ -107,9 +101,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
-  <a href="#" class="another-item"><%= "商品のカテゴリー名" %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
+  <a href="#" class="another-item"><%= @item.merchandise_category.name %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
