@@ -39,4 +39,9 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
+
 end
