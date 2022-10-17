@@ -21,4 +21,13 @@ class Item < ApplicationRecord
   belongs_to_active_hash :area
   belongs_to_active_hash :time_to_ship
 
+
+  def self.search(search)
+    if search != ""
+      Item.where('text LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
+  end
+
 end

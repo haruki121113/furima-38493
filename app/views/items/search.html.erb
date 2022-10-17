@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+
+<ul class='item-lists'>
+
+  <% @items.each do |item| %>
+    <li class='list'>
+      <%= link_to item_path(item.id) do %>
+      <div class='item-img-content'>
+        <%= image_tag item.image, class: "item-img" %>
+
+        <% if Order.exists?(item_id: item.id)%>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+        <% end %>
+
+      </div>
+      <div class='item-info'>
+        <h3 class='item-name'>
+          <%= item.merchandise_name %>
+        </h3>
+        <div class='item-price'>
+          <% delivery_charge = DeliveryCharge.find_by_id item.delivery_charge_id %>
+          <span><%= item.merchandise_price %>円<br><%= delivery_charge.name %></span>
+          <div class='star-btn'>
+            <%= image_tag "star.png", class:"star-icon" %>
+            <span class='star-count'>0</span>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= render "shared/footer" %>
